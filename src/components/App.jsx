@@ -8,34 +8,54 @@ import CharacterDetail from './CharacterDetail';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [storedCharacters, setStoredCharacters] = useState([]);
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [sortedCharacters, setSortedCharacters] = useState([]);
   const [filterName, setFilterName] = useState('');
 
   useEffect(() => {
-    fetch('https://rickandmortyapi.com/api/character')
-      .then(response => response.json())
-      .then(data => {
-        setCharacters(data.results);
-      })
-      .catch(error => console.error('Something went wrong', error));
+    const storedData = localStorage.getItem('characters');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setCharacters(parsedData);
+      setStoredCharacters(parsedData);
+      setFilteredCharacters(parsedData);
+      setSortedCharacters(parsedData);
+    } else {
+      fetch('https://rickandmortyapi.com/api/character')
+        .then(response => response.json())
+        .then(data => {
+          const sorted = data.results.sort((a, b) => (a.name < b.name ? -1 : 1));
+          setCharacters(sorted);
+          setStoredCharacters(sorted);
+          setFilteredCharacters(sorted);
+          setSortedCharacters(sorted);
+          localStorage.setItem('characters', JSON.stringify(sorted));
+        })
+        .catch(error => console.error('Something went wrong', error));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('filteredCharacters', JSON.stringify(filteredCharacters));
+  }, [filteredCharacters]);
 
   const handleNameChange = newValue => {
     setFilterName(newValue);
+    const filtered = storedCharacters.filter(character =>
+      character.name.toLowerCase().includes(newValue.toLowerCase())
+    );
+    setFilteredCharacters(filtered);
   };
-
-  const filteredCharacters = characters.filter(character => {
-    return character.name.toLowerCase().includes(filterName.toLowerCase());
-  });
 
   const { pathname } = useLocation();
   const characterDetailRoute = matchPath("/character/:id", pathname);
   const idCharacter = characterDetailRoute ? parseInt(characterDetailRoute.params.id) : null;
   const characterDetailData = characters.find(character => character.id === idCharacter);
-  
-  
+
   return (
     <>
-    <Header/>
+      <Header />
       <main>
         <Routes>
           <Route
