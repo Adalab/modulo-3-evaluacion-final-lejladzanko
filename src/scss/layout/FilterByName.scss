@@ -2,7 +2,6 @@
   margin: 20px;
   display: flex;
   justify-content: center;
-
 }
 
 .label {
@@ -12,15 +11,14 @@
 }
 
 .input {
-  width: 40%;
+  width: 100%; 
+  max-width: 300px; 
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
-
 }
-
 
 .input::placeholder {
   color: #999;

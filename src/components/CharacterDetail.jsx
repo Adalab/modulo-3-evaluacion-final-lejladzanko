@@ -14,19 +14,19 @@ function CharacterDetail({ character }) {
         <h4 className="character-detail__name">{character.name}</h4>
         <div className="details-container">
           <div className="detail">
-            <span className="detail-label">Species: </span>
+            <span className="detail-label">Species:</span>
             <span className="detail-value">{character.species}</span>
           </div>
           <div className="detail">
-            <span className="detail-label">Origin: </span>
+            <span className="detail-label">Origin:</span>
             <span className="detail-value">{character.origin.name}</span>
           </div>
           <div className="detail">
-            <span className="detail-label">Status: </span>
+            <span className="detail-label">Status:</span>
             <span className="detail-value">{character.status}</span>
           </div>
           <div className="detail">
-            <span className="detail-label">Episodes: </span>
+            <span className="detail-label">Episodes:</span>
             <span className="detail-value">{character.episode.length}</span>
           </div>
         </div>
@@ -37,6 +37,7 @@ function CharacterDetail({ character }) {
     </div>
   );
 }
+
 
 CharacterDetail.propTypes = {
   character: PropTypes.object.isRequired,

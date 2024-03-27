@@ -1,24 +1,31 @@
 import PropTypes from "prop-types";
-import "../scss/layout/FilterByName.scss"; 
+import "../scss/layout/FilterByName.scss";
 
 function FilterBySpecies({ onChangeSpecies, valueSpecies }) {
   const handleChange = (event) => {
     onChangeSpecies(event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+  };
+
   return (
-    <div className="filter-container">
-      <label className="label" htmlFor="species-filter">
-      </label>
-      <input
-        id="species-filter"
-        className="input"
-        type="text"
-        onChange={handleChange}
-        value={valueSpecies}
-        placeholder="Escribe la especie del personaje"
-      />
-    </div>
+    <form onSubmit={handleSubmit} className="filter-form">
+      <div className="filter-container">
+        <label className="label" htmlFor="species-filter">
+        </label>
+        <input
+          id="species-filter"
+          className="input"
+          type="text"
+          onChange={handleChange}
+          value={valueSpecies}
+          placeholder="Escribe la especie del personaje"
+        />
+      </div>
+    </form>
   );
 }
 

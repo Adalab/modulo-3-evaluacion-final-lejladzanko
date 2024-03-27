@@ -19,9 +19,12 @@
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #1e90ff; 
+    }
   }
   
-  .error-button:hover {
-    background-color: #1e90ff; 
-  }
+
+  
   

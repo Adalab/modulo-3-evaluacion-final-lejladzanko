@@ -6,18 +6,24 @@ function FilterByName({ onChangeName, valueName }) {
     onChangeName(event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
   return (
-    <div className="filter-container">
-      <label className="label" htmlFor="name-filter"></label>
-      <input
-        id="name-filter"
-        className="input"
-        type="text"
-        onChange={handleChange}
-        value={valueName}
-        placeholder="Escribe el nombre del personaje"
-      />
-    </div>
+    <form onSubmit={handleSubmit} className="filter-form">
+      <div className="filter-container">
+        <label className="label" htmlFor="name-filter"></label>
+        <input
+          id="name-filter"
+          className="input"
+          type="text"
+          onChange={handleChange}
+          value={valueName}
+          placeholder="Escribe el nombre del personaje"
+        />
+      </div>
+    </form>
   );
 }
 
