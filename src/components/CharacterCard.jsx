@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import '../scss/layout/CharacterCard.scss';
 
 function CharacterCard({ character }) {
   return (

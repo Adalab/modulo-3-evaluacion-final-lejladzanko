@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, matchPath } from 'react-router-dom';
 import '../scss/App.scss';
+import Header from './Header';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
@@ -31,11 +32,10 @@ function App() {
   const idCharacter = characterDetailRoute ? parseInt(characterDetailRoute.params.id) : null;
   const characterDetailData = characters.find(character => character.id === idCharacter);
   
+  
   return (
     <>
-      <header>
-        <h1>Rick and Morty Character Explorer</h1>
-      </header>
+    <Header/>
       <main>
         <Routes>
           <Route
