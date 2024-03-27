@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import '../scss/layout/CharacterCard.scss';
+import PropTypes from "prop-types";
+import "../scss/layout/CharacterCard.scss";
 
 function CharacterCard({ character }) {
   return (
@@ -13,6 +13,6 @@ function CharacterCard({ character }) {
 
 CharacterCard.propTypes = {
   character: PropTypes.object.isRequired,
-  }
+};
 
 export default CharacterCard;

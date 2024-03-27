@@ -13,7 +13,7 @@
   width: 90%;
   max-width: 600px;
   padding: 20px;
-  animation: fadeIn 0.5s ease forwards; 
+  animation: fadeIn 0.5s ease forwards;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,7 +37,7 @@
 .character-detail__name {
   margin-top: 20px;
   font-size: 24px;
-  color: #30d5c8; 
+  color: #30d5c8;
 
   @media (min-width: 768px) {
     font-size: 32px;
@@ -68,7 +68,7 @@
   border: none;
   border-radius: 5px;
 
- 
+
   @media (min-width: 768px) {
     padding: 15px 30px;
   }

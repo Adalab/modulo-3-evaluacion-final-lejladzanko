@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import FilterByName from './FilterByName';
+import PropTypes from "prop-types";
+import FilterByName from "./FilterByName";
 
 function Filters({ onChangeName, valueName }) {
-  const handleSubmit = event => {
-    event.preventDefault(); 
+  const handleSubmit = (event) => {
+    event.preventDefault();
   };
   return (
     <form onSubmit={handleSubmit}>

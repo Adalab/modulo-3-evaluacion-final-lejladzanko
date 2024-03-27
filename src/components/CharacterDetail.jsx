@@ -1,12 +1,16 @@
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import '../scss/layout/CharacterDetail.scss';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import "../scss/layout/CharacterDetail.scss";
 
 function CharacterDetail({ character }) {
   return (
     <div className="character-detail">
       <div className="character-detail__container">
-        <img src={character.image} alt={character.name} className="character-detail__image" />
+        <img
+          src={character.image}
+          alt={character.name}
+          className="character-detail__image"
+        />
         <h4 className="character-detail__name">{character.name}</h4>
         <div className="details-container">
           <div className="detail">
@@ -26,7 +30,9 @@ function CharacterDetail({ character }) {
             <span className="detail-value">{character.episode.length}</span>
           </div>
         </div>
-        <Link to="/" className="back-button">Volver al inicio</Link>
+        <Link to="/" className="back-button">
+          Volver al inicio
+        </Link>
       </div>
     </div>
   );

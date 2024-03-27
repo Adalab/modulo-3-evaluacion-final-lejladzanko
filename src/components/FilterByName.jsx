@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import '../scss/layout/FilterByName.scss';
+import PropTypes from "prop-types";
+import "../scss/layout/FilterByName.scss";
 
 function FilterByName({ onChangeName, valueName }) {
   const handleChange = (event) => {
@@ -22,8 +22,8 @@ function FilterByName({ onChangeName, valueName }) {
 }
 
 FilterByName.propTypes = {
-    onChangeName: PropTypes.func.isRequired,
-    valueName: PropTypes.string.isRequired,
+  onChangeName: PropTypes.func.isRequired,
+  valueName: PropTypes.string.isRequired,
 };
 
 export default FilterByName;
