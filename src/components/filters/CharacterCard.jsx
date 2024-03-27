@@ -10,7 +10,7 @@ function CharacterCard({ character }) {
 }
 
 CharacterCard.propTypes = {
-  character: PropTypes.string.isRequired,
+  character: PropTypes.object.isRequired,
   }
 
 export default CharacterCard;
