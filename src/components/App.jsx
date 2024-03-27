@@ -12,6 +12,7 @@ function App() {
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [sortedCharacters, setSortedCharacters] = useState([]);
   const [filterName, setFilterName] = useState("");
+  const [filterSpecies, setFilterSpecies] = useState("");
 
   useEffect(() => {
     const storedData = localStorage.getItem("characters");
@@ -53,6 +54,14 @@ function App() {
     setFilteredCharacters(filtered);
   };
 
+  const handleSpeciesChange = (newValue) => {
+    setFilterSpecies(newValue);
+    const filtered = characters.filter((character) =>
+      character.species.toLowerCase().includes(newValue.toLowerCase())
+    );
+    setFilteredCharacters(filtered);
+  };
+
   const { pathname } = useLocation();
   const characterDetailRoute = matchPath("/character/:id", pathname);
   const idCharacter = characterDetailRoute
@@ -74,6 +83,8 @@ function App() {
                 <Filters
                   valueName={filterName}
                   onChangeName={handleNameChange}
+                  onChangeSpecies={handleSpeciesChange}
+                  valueSpecies={filterSpecies}
                 />
                 <CharacterList characters={filteredCharacters} />
               </>
