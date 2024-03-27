@@ -1,11 +1,11 @@
 import React from 'react'
 
-function CharacterCard() {
+function FilterByImage() {
   return (
     <div>
       
     </div>
-  );
+  )
 }
 
-export default CharacterCard;
+export default FilterByImage

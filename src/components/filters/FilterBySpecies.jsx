@@ -1,11 +1,11 @@
 import React from 'react'
 
-function CharacterDetail() {
+function FilterBySpecies() {
   return (
     <div>
       
     </div>
-  );
+  )
 }
 
-export default CharacterDetail;
+export default FilterBySpecies
