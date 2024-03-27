@@ -5,6 +5,7 @@ import Header from "./Header";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
 import CharacterDetail from "./CharacterDetail";
+import NotFound from "./NotFound";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -93,7 +94,9 @@ function App() {
           <Route
             path="/character/:id"
             element={<CharacterDetail character={characterDetailData} />}
+            
           />
+           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </>
