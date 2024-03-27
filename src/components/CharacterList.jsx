@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import CharacterCard from './CharacterCard';
+import { Link } from 'react-router-dom';
 
 function CharacterList({ characters }) {
   return (
     <div className="character-list">
       {characters.map(character => (
-        <CharacterCard key={character.id} character={character} />
+        <Link key={character.id} to={`/character/${character.id}`}>
+          <CharacterCard character={character} />
+        </Link>
       ))}
     </div>
   );

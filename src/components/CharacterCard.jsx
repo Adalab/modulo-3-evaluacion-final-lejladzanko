@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 function CharacterCard({ character }) {
   return (
     <div className="character-card">
