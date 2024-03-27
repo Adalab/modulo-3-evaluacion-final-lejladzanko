@@ -22,7 +22,7 @@ Follow these steps to get the project up and running on your local machine:
 
 ## Installation
 
-Clone the repository to your local machine:
+- Clone the repository to your local machine:
 
 git clone https://github.com/Adalab/modulo-3-evaluacion-final-lejladzanko.git
 
