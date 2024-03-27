@@ -16,7 +16,7 @@ Features
 ## Getting Started
 Follow these steps to get the project up and running on your local machine:
 
-P## rerequisites
+## Prerequisites
 - Node.js installed on your machine
 - npm package manager
 
