@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 function CharacterDetail({ character }) {
   return (
@@ -7,6 +7,10 @@ function CharacterDetail({ character }) {
       <h2>{character.name}</h2>
     </div>
   );
+}
+
+CharacterDetail.propTypes = {
+character: PropTypes.string.isRequired,
 }
 
 export default CharacterDetail;

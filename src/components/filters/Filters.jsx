@@ -1,7 +1,5 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import FilterByName from './FilterByName';
-import FilterBySpecies from './FilterBySpecies';
-import FilterByImage from './FilterByImage';
 
 function Filters({ onChangeName, valueName }) {
   return (
@@ -10,5 +8,10 @@ function Filters({ onChangeName, valueName }) {
     </form>
   );
 }
+
+Filters.propTypes = {
+  onChangeName: PropTypes.func.isRequired,
+  valueName: PropTypes.string.isRequired,
+};
 
 export default Filters;
