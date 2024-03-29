@@ -20,7 +20,7 @@ function FilterByName({ onChangeName, valueName }) {
           type="text"
           onChange={handleChange}
           value={valueName}
-          placeholder="Escribe el nombre del personaje"
+          placeholder="Enter character name"
         />
       </div>
     </form>

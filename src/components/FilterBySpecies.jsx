@@ -22,7 +22,7 @@ function FilterBySpecies({ onChangeSpecies, valueSpecies }) {
           type="text"
           onChange={handleChange}
           value={valueSpecies}
-          placeholder="Escribe la especie del personaje"
+          placeholder="Enter species name"
         />
       </div>
     </form>
