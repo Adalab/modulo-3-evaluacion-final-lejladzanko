@@ -21,23 +21,28 @@
     @media (min-width: 768px) {
       padding: 40px;
     }
-    
   }
   
   &__image {
     width: 200px;
     height: auto;
     border-radius: 50%;
-  
+    transition: transform 0.3s ease;
+   
     @media (min-width: 768px) {
       width: 250px;
     }
   }
   
-&__name {
+  &__name {
     margin-top: 20px;
     font-size: 24px;
     color: #30d5c8;
+    transition: color 0.3s ease;
+  
+    &:hover {
+      color: #22ffaa; 
+    }
   
     @media (min-width: 768px) {
       font-size: 32px;
@@ -46,19 +51,20 @@
 }
 
 .details-container {
-  margin-top: 20px;
-}
-
-.detail {
-  margin-bottom: 10px;
-}
-
-.detail-label {
-  font-weight: bold;
-}
-
-.detail-value {
-  margin-left: 5px;
+  .detail {
+    margin-bottom: 10px;
+    
+  }
+  
+  .detail-label {
+    font-weight: bold;
+    color: #333; 
+  }
+  
+  .detail-value {
+    margin-left: 5px;
+    color: #666; 
+  }
 }
 
 .back-button {
@@ -68,10 +74,14 @@
   color: #fff;
   border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: #388e3c;
+    transform: scale(1.05); 
   }
 
   @media (min-width: 768px) {
@@ -79,3 +89,7 @@
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
