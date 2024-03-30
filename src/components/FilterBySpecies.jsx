@@ -8,7 +8,6 @@ function FilterBySpecies({ onChangeSpecies, valueSpecies }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
   };
 
   return (
@@ -16,14 +15,16 @@ function FilterBySpecies({ onChangeSpecies, valueSpecies }) {
       <div className="filter-container">
         <label className="label" htmlFor="species-filter">
         </label>
-        <input
+        <select
           id="species-filter"
           className="input"
-          type="text"
           onChange={handleChange}
           value={valueSpecies}
-          placeholder="Enter species name"
-        />
+        >
+          <option value="">Select species</option>
+          <option value="human">Human</option>
+          <option value="alien">Alien</option>
+        </select>
       </div>
     </form>
   );
