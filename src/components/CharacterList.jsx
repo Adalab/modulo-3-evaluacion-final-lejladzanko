@@ -22,6 +22,7 @@ function CharacterList({ characters, valueName }) {
 }
 CharacterList.propTypes = {
   characters: PropTypes.array.isRequired,
+  valueName: PropTypes.string.isRequired
 };
 
 export default CharacterList;

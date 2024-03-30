@@ -7,10 +7,10 @@ function Filters({ onChangeName, valueName, onChangeSpecies, valueSpecies }) {
     event.preventDefault();
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <FilterByName onChangeName={onChangeName} valueName={valueName} />
-      <FilterBySpecies onChangeSpecies={onChangeSpecies} valueSpecies={valueSpecies} /> 
-    </form>
+    <div>
+      <FilterByName onChangeName={onChangeName} valueName={valueName} onSubmit={handleSubmit}/>
+      <FilterBySpecies onChangeSpecies={onChangeSpecies} valueSpecies={valueSpecies} onSubmit={handleSubmit}/> 
+    </div>
   );
 }
 

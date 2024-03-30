@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useLocation, matchPath } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import "../scss/App.scss";
 import Header from "./Header";
 import Filters from "./Filters";
@@ -9,68 +9,35 @@ import NotFound from "./NotFound";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [storedCharacters, setStoredCharacters] = useState([]);
-  const [filteredCharacters, setFilteredCharacters] = useState([]);
-  const [sortedCharacters, setSortedCharacters] = useState([]);
   const [filterName, setFilterName] = useState("");
   const [filterSpecies, setFilterSpecies] = useState("");
 
   useEffect(() => {
     const storedData = localStorage.getItem("characters");
     if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setCharacters(parsedData);
-      setStoredCharacters(parsedData);
-      setFilteredCharacters(parsedData);
-      setSortedCharacters(parsedData);
+      setCharacters(JSON.parse(storedData));
     } else {
       fetch("https://rickandmortyapi.com/api/character")
         .then((response) => response.json())
         .then((data) => {
-          const sorted = data.results.sort((a, b) =>
-            a.name < b.name ? -1 : 1
-          );
+          const sorted = data.results.sort((a, b) => {
+            a = a.name.toLowerCase();
+            b = b.name.toLowerCase();
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+          });
           setCharacters(sorted);
-          setStoredCharacters(sorted);
-          setFilteredCharacters(sorted);
-          setSortedCharacters(sorted);
           localStorage.setItem("characters", JSON.stringify(sorted));
         })
         .catch((error) => console.error("Something went wrong", error));
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem(
-      "filteredCharacters",
-      JSON.stringify(filteredCharacters)
-    );
-  }, [filteredCharacters]);
-
-  const handleNameChange = (newValue) => {
-    setFilterName(newValue);
-    const filtered = storedCharacters.filter((character) =>
-      character.name.toLowerCase().includes(newValue.toLowerCase())
-    );
-    setFilteredCharacters(filtered);
-  };
-
-  const handleSpeciesChange = (newValue) => {
-    setFilterSpecies(newValue);
-    const filtered = characters.filter((character) =>
-      character.species.toLowerCase().includes(newValue.toLowerCase())
-    );
-    setFilteredCharacters(filtered);
-  };
-
-  const { pathname } = useLocation();
-  const characterDetailRoute = matchPath("/character/:id", pathname);
-  const idCharacter = characterDetailRoute
-    ? parseInt(characterDetailRoute.params.id)
-    : null;
-  const characterDetailData = characters.find(
-    (character) => character.id === idCharacter
-  );
+  const filteredCharacters = characters.filter(character => {
+    return character.name.toLowerCase().includes(filterName.toLowerCase()) &&
+           character.species.toLowerCase().includes(filterSpecies.toLowerCase());
+  });
 
   return (
     <>
@@ -83,8 +50,8 @@ function App() {
               <>
                 <Filters
                   valueName={filterName}
-                  onChangeName={handleNameChange}
-                  onChangeSpecies={handleSpeciesChange}
+                  onChangeName={setFilterName}
+                  onChangeSpecies={setFilterSpecies}
                   valueSpecies={filterSpecies}
                 />
                 <CharacterList characters={filteredCharacters} />
@@ -93,10 +60,9 @@ function App() {
           />
           <Route
             path="/character/:id"
-            element={<CharacterDetail character={characterDetailData} />}
-            
+            element={<CharacterDetail />}
           />
-           <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </>
