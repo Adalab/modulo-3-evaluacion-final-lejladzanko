@@ -3,8 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import "../scss/layout/CharacterDetail.scss";
 
 function CharacterDetail() {
-  const [character, setCharacter] = useState({});
+  const [character, setCharacter] = useState(null); 
   const { id: characterId } = useParams();
+  const aliveEmoji = "🔋";
+  const deadEmoji = "🪫";
 
   useEffect(() => {
     const storedData = localStorage.getItem(`character-${characterId}`);
@@ -22,7 +24,7 @@ function CharacterDetail() {
     }
   }, [characterId]);
 
-  if (Object.keys(character).length === 0) {
+  if (character === null) {
     return <div>Loading...</div>;
   }
 
@@ -42,16 +44,16 @@ function CharacterDetail() {
           </div>
           <div className="detail">
             <span className="detail-label">Status:</span>
-            <span className="detail-value">{character.status}</span>
+            <span className="detail-value">
+              {character.status} {character.status === "Alive" ? aliveEmoji : character.status === "Dead" ? deadEmoji : "❓"}
+            </span>
           </div>
           <div className="detail">
             <span className="detail-label">Episodes:</span>
             <span className="detail-value">{character.episode.length}</span>
           </div>
         </div>
-        <Link to="/" className="back-button">
-          Volver al inicio
-        </Link>
+        <Link to="/" className="back-button">Volver al inicio</Link>
       </div>
     </div>
   );

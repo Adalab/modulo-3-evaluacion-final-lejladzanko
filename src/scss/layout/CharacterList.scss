@@ -4,7 +4,6 @@
   gap: 20px;
   justify-content: center;
   padding: 20px;
-  background: linear-gradient(135deg, #22ffaa, #00aaff);
   border-radius: 10px;
 }
 
@@ -16,6 +15,9 @@
   transform: translate(-50%, -50%);
 }
 
-body {
-  background-color: #a9f3fd;
+html {
+  background-image: url('https://styledme.com/wp-content/uploads/2020/09/rick-and-morty-zoom-virtual-backgrounds-free-download-background-images.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
 }
