@@ -54,7 +54,7 @@ function App() {
                   onChangeSpecies={setFilterSpecies}
                   valueSpecies={filterSpecies}
                 />
-                <CharacterList characters={filteredCharacters} />
+                <CharacterList characters={filteredCharacters} valueName={filterName} />
               </>
             }
           />
